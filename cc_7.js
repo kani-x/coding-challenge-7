@@ -79,4 +79,23 @@ let highValueTransactions = filterHighValueTransactions(transactions, amount => 
 // Logging the filtered transactions
 console.log("High Value Transactions: ", highValueTransactions); // Expected output: [1200, 3000, 2200]
 
+// Task 7: Budget Tracker (Closures)
+
+// Function to create a budget tracker
+function createBudgetTracker() {
+    let balance = 0;  // Initial balance is 0
+
+    // The returned function will allow us to add expenses
+    return function(expense) {
+        balance -= expense; // Deducting the expense from balance
+        console.log("Current Balance: $" + balance);  // Logging the current balance
+    };
+}
+
+// Test Data
+let budget = createBudgetTracker(); // Create a new budget tracker
+
+// Adding expenses and tracking balance
+budget(300); // Expected output: "Current Balance: -$300"
+budget(200); // Expected output: "Current Balance: -$500"
 
